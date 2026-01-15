@@ -63,32 +63,5 @@ app.get('/getnotes',async(req,res)=>{
 
 });
 
-app.post('/searchnotes',async(req,res)=>{
-
-    try{
-
-        const {query} = req.query;
-        if(!query){
-                return res.status(401).json({
-                message : "Enter search query"
-            });
-        }
-        const data = await notesmodel.find({
-            $and: [
-                    { title: { $regex: query, $options: 'i' } }
-                ]
-        });
-         return res.status(200).json({
-            message : "data fetched",
-            notes : data
-        });
-
-    }catch(e){
-         return res.status(500).json({
-            message : "internal server error"
-        });
-    }
-
-});
 
 module.exports = app;
