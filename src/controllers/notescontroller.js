@@ -63,5 +63,9 @@ app.get('/getnotes',async(req,res)=>{
 
 });
 
+app.get('/search-note',async(req,res)=>{
+    
+});
+
 
 module.exports = app;
